@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ScrapController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +14,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
-Route::post('/scrap', [ScrapController::class, 'scrapData'])->name('scrap.data');
+Route::get('/', [WebController::class, 'index']);
+Route::get('/{page?}', [WebController::class, 'index']);

@@ -1,6 +1,16 @@
 <script setup>
 import Layout from './Layout'
 import { Head } from '@inertiajs/vue3'
+const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+async function fetchData() {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    token: csrf
+  };
+  const response = await fetch('/api/scrape', requestOptions).then(res => res.json())
+  alert(JSON.stringify(response))
+}
 
 defineProps({ user: Object })
 </script>
@@ -9,15 +19,16 @@ defineProps({ user: Object })
   <Layout>
 
     <Head title="Home | Bilpro" />
+    <button @click="fetchData" class="btn">Ambil data dari backend</button>
     <div class="overflow-x-auto">
       <table class="table table-zebra">
         <!-- head -->
         <thead>
           <tr>
             <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Contoh</th>
+            <th>Contoh</th>
+            <th>Contoh</th>
           </tr>
         </thead>
         <tbody>
