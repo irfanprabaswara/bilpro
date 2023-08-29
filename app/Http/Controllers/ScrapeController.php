@@ -12,14 +12,9 @@ class ScrapeController extends Controller
     {
         $spreadsheetId = '1wPJ22IagwOml8Au4qeHZ56KQ65dOnH560osSYrkDpS0';
         $sheetName = 'DATA ALL';
-        $headers = ['Partner'];
+        $headers = ['Partner', 'Idnumber', 'BPName'];
 
-        // $this->larasheetsService = new LarasheetsService($spreadsheetId, $sheetName, $headers);
-        // Lakukan proses scraping atau tugas yang Anda inginkan di sini
-        // Misalnya:
-        // $scrapedData = ... // Lakukan scraping menggunakan library atau kode Anda sendiri
-        // return view('hasil_scraping', compact('scrapedData'));
-        // dd("kepo");
-        return response()->json(['message' => "jancok"]);
+        $this->larasheetsService = new LarasheetsService($spreadsheetId, $sheetName, $headers);
+        return response()->json(['message' => $this->larasheetsService->getAll()]);
     }
 }

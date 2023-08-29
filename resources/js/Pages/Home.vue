@@ -1,7 +1,9 @@
 <script setup>
+import { ref } from 'vue';
 import Layout from './Layout'
 import { Head } from '@inertiajs/vue3'
 const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+const data = ref([])
 async function fetchData() {
   const requestOptions = {
     method: 'POST',
@@ -9,7 +11,7 @@ async function fetchData() {
     token: csrf
   };
   const response = await fetch('/api/scrape', requestOptions).then(res => res.json())
-  alert(JSON.stringify(response))
+  data.value = response.message ?? []
 }
 
 defineProps({ user: Object })
@@ -26,32 +28,18 @@ defineProps({ user: Object })
         <thead>
           <tr>
             <th></th>
-            <th>Contoh</th>
-            <th>Contoh</th>
-            <th>Contoh</th>
+            <th>Partner</th>
+            <th>IdNumber</th>
+            <th>BPName</th>
           </tr>
         </thead>
         <tbody>
-          <!-- row 1 -->
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
           <!-- row 2 -->
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <!-- row 3 -->
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
+          <tr v-for="row, index in data.slice(1)">
+            <th>{{ index + 1 }}</th>
+            <td>{{ row.Partner }}</td>
+            <td>{{ row.Idnumber }}</td>
+            <td>{{ row.BPName }}</td>
           </tr>
         </tbody>
       </table>
