@@ -6,9 +6,9 @@ import { Link } from '@inertiajs/vue3'
   <main>
     <div class="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content block">
+      <div class="drawer-content block overflow-x-hidden max-w-full">
         <!-- Page content here -->
-        <div data-theme="fantasy" class="block min-h-screen">
+        <div data-theme="fantasy" class="block min-h-screen ">
           <div class="navbar bg-base-100">
             <div class="flex-none">
               <label for="my-drawer-2" class="btn btn-primary drawer-button btn-square btn-ghost lg:hidden">
@@ -33,7 +33,7 @@ import { Link } from '@inertiajs/vue3'
               </button>
             </div>
           </div>
-          <div class="flex flex-col p-10">
+          <div class="flex flex-col p-10 ">
             <slot />
           </div>
         </div>
