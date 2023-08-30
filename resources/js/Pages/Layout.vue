@@ -1,5 +1,19 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
+//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
 </script>
 
 <template>
@@ -50,6 +64,24 @@ import { Link } from '@inertiajs/vue3'
           </li>
           <li>
             <Link href="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link href="/fuady">Fuady</Link>
+          </li>
+          <li>
+            <Link href="/ica">Annisa</Link>
+          </li>
+          <li>
+            <Link href="/irfan">Irfan</Link>
+          </li>
+          <li>
+            <Link href="/ivan">Ivan</Link>
+          </li>
+          <li>
+            <Link href="/riza">Riza</Link>
+          </li>
+          <li>
+            <Link href="/rifqi">Rifqi</Link>
           </li>
         </ul>
 
