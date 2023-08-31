@@ -34,7 +34,7 @@ for (i = 0; i < dropdown.length; i++) {
               </label>
             </div>
             <div class="flex-1">
-              <a class="btn btn-ghost normal-case text-xl">Bilpro|JNCX</a>
+              <a class="btn btn-ghost normal-case text-xl">Bilpro Kalteng</a>
             </div>
             <div class="flex-none">
               <button class="btn btn-square btn-ghost">
@@ -60,28 +60,7 @@ for (i = 0; i < dropdown.length; i++) {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/about">About</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link href="/fuady">Fuady</Link>
-          </li>
-          <li>
-            <Link href="/ica">Annisa</Link>
-          </li>
-          <li>
-            <Link href="/irfan">Irfan</Link>
-          </li>
-          <li>
-            <Link href="/ivan">Ivan</Link>
-          </li>
-          <li>
-            <Link href="/riza">Riza</Link>
-          </li>
-          <li>
-            <Link href="/rifqi">Rifqi</Link>
+            <Link href="/detail">Detail</Link>
           </li>
         </ul>
 
