@@ -55,11 +55,11 @@ defineProps({ user: Object })
             <th></th>
             <th>SEGMEN/NAMA AM</th>
             <th bgcolor="#ff3333">TUNGGAKAN</th>
-            <th>TAGIHAN BULAN BERJALAN</th>
-            <th>PROSES PEMBAYARAN</th>
-            <th>BUKTI TRANSFER</th>
-            <th>BUKTI POTONG PAJAK</th>
-            <th>LUNAS</th>
+            <th bgcolor="#ffff33">TAGIHAN BULAN BERJALAN</th>
+            <th bgcolor="#ffad33">PROSES PEMBAYARAN</th>
+            <th bgcolor="#33ffff">BUKTI TRANSFER</th>
+            <th bgcolor="#33ffff">BUKTI POTONG PAJAK</th>
+            <th bgcolor="#33ff33">LUNAS</th>
           </tr>
         </thead>
         <tbody>
