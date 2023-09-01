@@ -12,6 +12,8 @@ class WebController extends Controller
     private function getPageComponent($page)
     {
         switch ($page) {
+            case 'detail':
+                return 'Detail';
             case 'value':
                 break;
             default:
