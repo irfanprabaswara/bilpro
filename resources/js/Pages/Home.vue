@@ -8,7 +8,7 @@ async function fetchData() {
     headers: { 'Content-Type': 'application/json' },
     token: csrf
   };
-  const response = await fetch('/api/scrape', requestOptions).then(res => res.json())
+  const response = await fetch('/api/get-summary', requestOptions).then(res => res.json())
   alert(JSON.stringify(response))
 }
 

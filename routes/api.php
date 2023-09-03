@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/scrape', [ScrapeController::class, 'scrapeData'])->name('scrap.data');
+Route::post('/get-summary',[ScrapeController::class, 'getSummary']);
