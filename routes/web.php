@@ -15,5 +15,5 @@ use App\Http\Controllers\WebController;
 */
 
 
-Route::get('/', [WebController::class, 'index']);
+Route::get('/', [WebController::class, 'home']);
 Route::get('/{page?}', [WebController::class, 'index']);

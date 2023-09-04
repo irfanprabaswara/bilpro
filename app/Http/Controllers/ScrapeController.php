@@ -32,9 +32,9 @@ class ScrapeController extends Controller
             if ($am == "" || $segment == "") {
                 return $carry;
             }
-            if ($am !== 'IRFAN') {
-                return $carry;
-            }
+            // if ($am !== 'IRFAN') {
+            //     return $carry;
+            // }
 
             if (!isset($carry['am'])) {
                 $carry['am'] = [];

@@ -1,33 +1,30 @@
 <script setup>
+import { ref } from 'vue';
 import Layout from './Layout'
 import { Head } from '@inertiajs/vue3'
-const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
-async function fetchData() {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    token: csrf
-  };
-  const response = await fetch('/api/get-summary', requestOptions).then(res => res.json())
-  alert(JSON.stringify(response))
+//const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+const category=ref('segment');
+const typeRevenue=ref('count');
+const type={
+  count:["count_tagihan", "count_tunggakan"],
+  sum:["sum_tagihan", "sum_tunggakan"]
 }
 
-defineProps({ user: Object })
+defineProps({ data: Object })
 </script>
 
 <template>
   <Layout>
 
     <Head title="Home | Bilpro" />
-    <button @click="fetchData" class="btn">Ambil data dari backend</button>
     <form action="#">
       <table>
         <div>
           <th>
           <label for="filter1">Choose Filter 1 (Segmen/AM) : </label>
           <td>
-            <select id="filter1" name="filter1">
-              <option value="segmen">SEGMEN</option>
+            <select v-model="category" id="filter1" name="filter1">
+              <option value="segment">SEGMEN</option>
               <option value="am">AM</option>
             </select>
           </td>
@@ -35,9 +32,9 @@ defineProps({ user: Object })
         <th>
           <label for="filter2">Choose Filter 2 (ID/Rupiah) : </label>
           <td>
-            <select id="filter2" name="filter2">
-              <option value="segmen">ID</option>
-              <option value="am">Rupiah</option>
+            <select v-model="typeRevenue" id="filter2" name="filter2">
+              <option value="count">ID</option>
+              <option value="sum">Rupiah</option>
             </select>
           </td>
         </th>
@@ -52,7 +49,6 @@ defineProps({ user: Object })
         <!-- head -->
         <thead>
           <tr>
-            <th></th>
             <th>SEGMEN/NAMA AM</th>
             <th bgcolor="#ff3333">TUNGGAKAN</th>
             <th bgcolor="#ffff33">TAGIHAN BULAN BERJALAN</th>
@@ -64,15 +60,16 @@ defineProps({ user: Object })
         </thead>
         <tbody>
           <!-- row 2 -->
-          <tr v-for="row, index in filtered">
-            <th>{{ index + 1 }}</th>
-            <td>{{ row['Partner'] }}</td>
-            <td>{{ row['Idnumber'] }}</td>
-            <td>{{ row['BPName'] }}</td>
-            <td>{{ row['Account Name'] }}</td>
-            <td>{{ row['Subsegmen'] }}</td>
-            <td>{{ row['Business Share'] }}</td>
-            <td>{{ row['Divisi'] }}</td>
+          <tr v-for="key, index in Object.keys(data[category])">
+            <th>{{ key }}</th>
+            <td v-for="col in type[typeRevenue]">
+            <a class="link link-primary" href="/detail">{{ typeRevenue=='sum'?data[category][key][col].toLocaleString('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+            }):data[category][key][col] }}</a>
+            </td>
+            <!-- <td>{{ data[category][key]['count_tunggakan'] }}</td> -->
+            
           </tr>
         </tbody>
       </table>
